@@ -23,6 +23,16 @@
             "saoEnabled": false
         },
         {
+            "id": "AC20InstituteVar2",
+            "name": "AC20 Institute Var 2",
+            "position": [
+                100,
+                0,
+                0
+            ],
+            "saoEnabled": false
+        },
+        {
             "id": "MAPFullPrecision",
             "name": "Model with Full Precision",
             "position": [
