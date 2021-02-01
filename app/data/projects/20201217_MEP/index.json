@@ -3,8 +3,8 @@
     "name": "20201217_MEP",
     "models": [
         {
-            "id": "20201217_MEP",
-            "name": "20201217_MEP"
+            "id": "design",
+            "name": "20201217_MEP test"
         }
     ],
     "viewerConfigs": {
@@ -20,7 +20,7 @@
     },
     "viewerContent": {
         "modelsLoaded": [
-            "20201217_MEP"
+            "design"
         ]
     },
     "viewerState": {

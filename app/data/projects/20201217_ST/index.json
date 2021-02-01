@@ -3,7 +3,7 @@
     "name": "20201217_ST",
     "models": [
         {
-            "id": "20201217_ST",
+            "id": "design",
             "name": "20201217_ST"
         }
     ],
@@ -20,7 +20,7 @@
     },
     "viewerContent": {
         "modelsLoaded": [
-            "20201217_ST"
+            "design"
         ]
     },
     "viewerState": {
