@@ -1,5 +1,5 @@
 {
-  "id": "20201217_MEP",
+  "id": "專案編號",
   "projectId": "1TlmIymt90Lgo20rIQg2xd",
   "author": "",
   "createdAt": "2020-12-17T15:26:35",
@@ -8,7 +8,7 @@
   "metaObjects": [
     {
       "id": "1TlmIymt90Lgo20rIQg2xd",
-      "name": "wow",
+      "name": "專案編號",
       "type": "IfcProject",
       "parent": null
     },
