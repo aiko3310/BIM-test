@@ -23,6 +23,26 @@
             "saoEnabled": false
         },
         {
+            "id": "20201217_MEP",
+            "name": "20201217 MEP",
+            "position": [
+                100,
+                0,
+                0
+            ],
+            "saoEnabled": false
+        },
+        {
+            "id": "20201217_ST",
+            "name": "20201217 ST",
+            "position": [
+                100,
+                0,
+                0
+            ],
+            "saoEnabled": false
+        },
+        {
             "id": "AC20InstituteVar2",
             "name": "AC20 Institute Var 2",
             "position": [
