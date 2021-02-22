@@ -4,7 +4,10 @@
   "models": [
       {
           "id": "Mucha2016_12_15",
-          "name": "Mucha2016_12_15 test"
+          "name": "Mucha2016_12_15 test",
+          "position": [-20,-20,-10],
+          "scale": [1.0, 1.0, 1.0],
+          "rotation": [0.0, 0.0, 0.0]
       }
   ],
   "viewerConfigs": {
@@ -29,9 +32,9 @@
       "expandClassesTree": 1,
       "expandStoreysTree": 1,
       "setCamera": {
-          "eye": [65.79, 42.41, 15.37],
-          "look": [25.78, -28.86, -75.24],
-          "up": [-0.23, 0.81, -0.53]
+          "eye": [0, 0, 70],
+          "look": [0, 0, 0],
+          "up": [0, 0.9, -0.9]
       }
   }
 }
