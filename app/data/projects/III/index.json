@@ -1,0 +1,46 @@
+{
+    "id": "ManyModels",
+    "name": "Many Models",
+    "models": [
+        {
+            "id": "20201217_MEP",
+            "name": "2020/12/17 MEP",
+            "position": [
+                100,
+                0,
+                0
+            ],
+            "saoEnabled": false
+        },
+        {
+            "id": "20201217_ST",
+            "name": "2020/12/17 ST",
+            "position": [
+                100,
+                0,
+                0
+            ],
+            "saoEnabled": false
+        },
+        {
+            "id": "Mucha2016_12_15",
+            "name": "Mucha 2016/12/15",
+            "position": [-20,-20,-10],
+            "saoEnabled": false
+        }
+    ],
+    "viewerConfigs": {
+        "cameraNear": "0.05",
+        "cameraFar": "3000.0",
+        "saoEnabled": "true",
+        "saoBias": "0.5",
+        "saoIntensity": "0.5",
+        "saoScale": "1200.0",
+        "saoKernelRadius": "100"
+    },
+    "viewerContent": {
+        "modelsLoaded": [
+            "20201217_MEP","Mucha2016_12_15"
+        ]
+    }
+}

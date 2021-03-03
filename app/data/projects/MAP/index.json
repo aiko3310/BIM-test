@@ -4,11 +4,7 @@
     "models": [
         {
             "id": "MAPFullPrecision",
-            "name": "Model with Full Precision",
-            "position": [-10,-20,-10],
-            "scale": [1.0, 1.0, 1.0],
-            "rotation": [0.0, 0.0, 0.0],
-            "saoEnabled": false
+            "name": "Model with Full Precision"
         },
         {
             "id": "MAPJitter",
@@ -34,11 +30,6 @@
         "tabOpen": "objects",
         "expandObjectsTree": 3,
         "expandClassesTree": 1,
-        "expandStoreysTree": 1,
-        "setCamera": {
-            "eye": [0, 0, 70],
-            "look": [0, 0, 0],
-            "up": [0, 0.9, -0.9]
-        }
+        "expandStoreysTree": 1
     }
 }
