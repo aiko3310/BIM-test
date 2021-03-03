@@ -28,11 +28,11 @@ function createExplorerTemplate(cfg) {
   const explorerTemplate =
     `<div class="xeokit-tabs">
     <div class="xeokit-tab xeokit-modelsTab">
-        <a class="xeokit-tab-btn" href="#">Models</a>
+        <a class="xeokit-tab-btn" href="#">模型</a>
         <div class="xeokit-tab-content">
             <div class="xeokit-btn-group">
-                <button type="button" class="xeokit-loadAllModels xeokit-btn disabled" data-tippy-content="Load all models">Load all</button>
-                <button type="button" class="xeokit-unloadAllModels xeokit-btn disabled" data-tippy-content="Unload all models">Unload all</button>` +
+                <button type="button" class="xeokit-loadAllModels xeokit-btn disabled" data-tippy-content="載入此專案全部模型">載入全部</button>
+                <button type="button" class="xeokit-unloadAllModels xeokit-btn disabled" data-tippy-content="卸載此專案全部模型">卸載全部</button>` +
     (cfg.enableEditModels
       ? `<button type="button" class="xeokit-addModel xeokit-btn disabled" data-tippy-content="Add model">Add</button>`
       : ``) +
@@ -41,31 +41,31 @@ function createExplorerTemplate(cfg) {
         </div>
     </div>
     <div class="xeokit-tab xeokit-objectsTab">
-        <a class="xeokit-tab-btn disabled" href="#">Objects</a>
+        <a class="xeokit-tab-btn disabled" href="#">物件</a>
         <div class="xeokit-tab-content">
          <div class="xeokit-btn-group">
-            <button type="button" class="xeokit-showAllObjects xeokit-btn disabled" data-tippy-content="Show all objects">Show all</button>
-            <button type="button" class="xeokit-hideAllObjects xeokit-btn disabled" data-tippy-content="Hide all objects">Hide all</button>
+            <button type="button" class="xeokit-showAllObjects xeokit-btn disabled" data-tippy-content="顯示全部物件">顯示全部</button>
+            <button type="button" class="xeokit-hideAllObjects xeokit-btn disabled" data-tippy-content="隱藏全部物件">隱藏全部</button>
         </div>
         <div class="xeokit-objects xeokit-tree-panel" ></div>
         </div>
     </div>
     <div class="xeokit-tab xeokit-classesTab">
-        <a class="xeokit-tab-btn disabled" href="#">Classes</a>
+        <a class="xeokit-tab-btn disabled" href="#">類別</a>
         <div class="xeokit-tab-content">
             <div class="xeokit-btn-group">
-                <button type="button" class="xeokit-showAllClasses xeokit-btn disabled" data-tippy-content="Show all classes">Show all</button>
-                <button type="button" class="xeokit-hideAllClasses xeokit-btn disabled" data-tippy-content="Hide all classes">Hide all</button>
+                <button type="button" class="xeokit-showAllClasses xeokit-btn disabled" data-tippy-content="顯示全部類別">顯示全部</button>
+                <button type="button" class="xeokit-hideAllClasses xeokit-btn disabled" data-tippy-content="隱藏全部類別">隱藏全部</button>
             </div>
             <div class="xeokit-classes xeokit-tree-panel" ></div>
         </div>
     </div>
      <div class="xeokit-tab xeokit-storeysTab">
-        <a class="xeokit-tab-btn disabled" href="#">Storeys</a>
+        <a class="xeokit-tab-btn disabled" href="#">樓層</a>
         <div class="xeokit-tab-content">
          <div class="xeokit-btn-group">
-                <button type="button" class="xeokit-showAllStoreys xeokit-btn disabled" data-tippy-content="Show all storeys">Show all</button>
-                <button type="button" class="xeokit-hideAllStoreys xeokit-btn disabled" data-tippy-content="Hide all storeys">Hide all</button>
+                <button type="button" class="xeokit-showAllStoreys xeokit-btn disabled" data-tippy-content="顯示全部樓層">顯示全部</button>
+                <button type="button" class="xeokit-hideAllStoreys xeokit-btn disabled" data-tippy-content="隱藏全部樓層">隱藏全部</button>
             </div>
              <div class="xeokit-storeys xeokit-tree-panel"></div>
         </div>
@@ -81,24 +81,24 @@ const toolbarTemplate = `<div class="xeokit-toolbar">
     </div>
     <div class="xeokit-btn-group" role="group">
         <!-- 3D Mode button -->
-        <button type="button" class="xeokit-threeD xeokit-btn fa fa-cube fa-2x" data-tippy-content="Toggle 2D/3D"></button>
+        <button type="button" class="xeokit-threeD xeokit-btn fa fa-cube fa-2x" data-tippy-content="切換 2D/3D 模式"></button>
         <!-- Perspective/Ortho Mode button -->
-        <button type="button" class="xeokit-ortho xeokit-btn fa fa-th fa-2x" data-tippy-content="Toggle Perspective/Ortho"></button>
+        <button type="button" class="xeokit-ortho xeokit-btn fa fa-th fa-2x" data-tippy-content="切換 透視圖/正交 模式"></button>
         <!-- Fit button -->
-        <button type="button" class="xeokit-fit xeokit-btn fa fa-crop fa-2x disabled" data-tippy-content="View fit"></button>   
+        <button type="button" class="xeokit-fit xeokit-btn fa fa-crop fa-2x disabled" data-tippy-content="查看滿版"></button>   
         <!-- First Person mode button -->
-        <button type="button" class="xeokit-firstPerson xeokit-btn fa fa-male fa-2x disabled" data-tippy-content="First person"></button>
+        <button type="button" class="xeokit-firstPerson xeokit-btn fa fa-male fa-2x disabled" data-tippy-content="第一人稱模式"></button>
     </div>
     <!-- Tools button group -->
     <div class="xeokit-btn-group" role="group">
         <!-- Hide tool button -->
-        <button type="button" class="xeokit-hide xeokit-btn fa fa-eraser fa-2x disabled" data-tippy-content="Hide objects"></button>
+        <button type="button" class="xeokit-hide xeokit-btn fa fa-eraser fa-2x disabled" data-tippy-content="隱藏物件"></button>
         <!-- Select tool button -->
-        <button type="button" class="xeokit-select xeokit-btn fa fa-mouse-pointer fa-2x disabled" data-tippy-content="Select objects"></button>
+        <button type="button" class="xeokit-select xeokit-btn fa fa-mouse-pointer fa-2x disabled" data-tippy-content="選擇物件"></button>
         <!-- Query tool button -->
-        <button type="button" class="xeokit-query xeokit-btn fa fa-info-circle fa-2x disabled" data-tippy-content="Query objects"></button>
+        <button type="button" class="xeokit-query xeokit-btn fa fa-info-circle fa-2x disabled" data-tippy-content="查詢物件"></button>
         <!-- section tool button -->
-        <button type="button" class="xeokit-section xeokit-btn fa fa-cut fa-2x disabled" data-tippy-content="Slice objects"><div class="xeokit-section-menu-button"><span class="xeokit-arrow-down xeokit-section-menu-button-arrow"></span></div><div class="xeokit-section-counter" data-tippy-content="Number of existing slices"></div></button>
+        <button type="button" class="xeokit-section xeokit-btn fa fa-cut fa-2x disabled" data-tippy-content="將物件切片"><div class="xeokit-section-menu-button"><span class="xeokit-arrow-down xeokit-section-menu-button-arrow"></span></div><div class="xeokit-section-counter" data-tippy-content="切片號碼"></div></button>
     </div>
 
 </div>`;
