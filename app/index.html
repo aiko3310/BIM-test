@@ -7,16 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>BIM 觀看器</title>
-
+    <!-- bootstrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- BIMViewer styles -->
     <link rel="stylesheet" href="./lib/fontawesome-free-5.11.2-web/css/all.min.css" type="text/css"/>
     <link rel="stylesheet" href="../css/BIMViewer.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/bimModal.css" type="text/css"/>
 
     <!-- App style -->
     <link rel="stylesheet" href="./css/style.css"/>
 
     <!-- App tooltips style -->
     <link rel="stylesheet" href="./lib/backdrop.css"/>
+    
 
 </head>
 
@@ -30,12 +33,50 @@
     </div>
 </div>
 <canvas id="myNavCubeCanvas"></canvas>
+<div id='objectInfoModal' class="object-info-modal">
+    <div class="object-info-modal-content">
+        <div class="object-info-modal-content-header">設備資訊<i class="fas fa-times" id='closeObjectInfoModalIcon'></i></div>
+        <div class="object-info-modal-content-content">
+            <div class="name">
+                <h6>設備名稱：</h6>
+                <p></p>
+            </div>
+            <div class="table-responsive">
+               <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>時間</th>
+                        <th>事件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2020/03/01 20:30</td>
+                        <td>維修完成</td>
+                    </tr>
+                    <tr>
+                        <td>2020/03/01 19:30</td>
+                        <td>通報維修</td>
+                    </tr>
+                </tbody>
+            </table> 
+            </div>
+            
+        </div>
+    </div>
+</div>
 </body>
 
 <!-- App tooltips libraries-->
 <script src="./lib/popper.js"></script>
 <script src="./lib/tippy.js"></script>
-
+<script>
+    const closeIcon = document.getElementById('closeObjectInfoModalIcon')
+    const objectInfoModal = document.getElementById('objectInfoModal')
+    closeIcon.addEventListener('click',event => {
+        objectInfoModal.classList.remove("show");
+    })
+</script>
 <script type="module">
 
     // Set up application

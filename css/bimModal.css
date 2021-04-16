@@ -1,0 +1,73 @@
+.object-info-modal{
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(3, 16, 63, 0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 200001;
+  opacity: 0;
+  transition: opacity .3s ease-out;
+}
+.name{
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 1rem;
+}
+.name h6{
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  line-height: inherit;
+}
+.name p{
+  margin: 0;
+}
+.show{
+	-webkit-animation: fade-in .3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in .3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  display: flex;
+}
+.object-info-modal-content{
+  background: white;
+  width: 40%;
+  /* border: 2px solid #888; */
+  border-radius: 0.5em;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+.object-info-modal-content-header{
+  padding: 16px;
+  border-bottom: 1px solid #888;
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.object-info-modal-content-header i {
+  cursor: pointer;
+  color: #888;
+  font-size: 24px;
+}
+.object-info-modal-content-content{
+  padding: 16px;
+}
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

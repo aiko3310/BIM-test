@@ -11,6 +11,14 @@ class ObjectContextMenu extends ContextMenu {
       items: [
         [
           {
+            title: "查看設備資訊",
+            doAction: function (context) {
+              context.showObjectInModal();
+            },
+          },
+        ],
+        [
+          {
             title: "符合滿版",
             doAction: function (context) {
               const viewer = context.viewer;
@@ -76,7 +84,7 @@ class ObjectContextMenu extends ContextMenu {
               }
               scene.setObjectsVisible(scene.visibleObjectIds, false);
               scene.setObjectsHighlighted(scene.highlightedObjectIds, false);
-              metaObject.withMetaObjectsInSubtree((metaObject) => {
+              metaObject.withMetaObjectsInSubtree(metaObject => {
                 const entity = scene.objects[metaObject.id];
                 if (entity) {
                   entity.visible = true;
@@ -139,7 +147,7 @@ class ObjectContextMenu extends ContextMenu {
               scene.setObjectsXRayed(scene.objectIds, true);
               scene.setObjectsPickable(scene.objectIds, false);
               scene.setObjectsHighlighted(scene.highlightedObjectIds, false);
-              metaObject.withMetaObjectsInSubtree((metaObject) => {
+              metaObject.withMetaObjectsInSubtree(metaObject => {
                 const entity = scene.objects[metaObject.id];
                 if (entity) {
                   entity.xrayed = false;

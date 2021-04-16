@@ -178,15 +178,15 @@ class BIMViewer extends Controller {
     const queryInfoPanelElement = cfg.queryInfoPanelElement;
     const busyModelBackdropElement = cfg.busyModelBackdropElement;
 
-    explorerElement.oncontextmenu = (e) => {
+    explorerElement.oncontextmenu = e => {
       e.preventDefault();
     };
 
-    toolbarElement.oncontextmenu = (e) => {
+    toolbarElement.oncontextmenu = e => {
       e.preventDefault();
     };
 
-    navCubeCanvasElement.oncontextmenu = (e) => {
+    navCubeCanvasElement.oncontextmenu = e => {
       e.preventDefault();
     };
 
@@ -282,7 +282,7 @@ class BIMViewer extends Controller {
       let threeDActive = false;
       let firstPersonActive = false;
 
-      this.setThreeDModeActive = (active) => {
+      this.setThreeDModeActive = active => {
         if (active) {
           bimViewer._firstPersonMode.setActive(false);
           bimViewer.viewer.cameraControl.navMode = "orbit";
@@ -295,7 +295,7 @@ class BIMViewer extends Controller {
         threeDActive = active;
       };
 
-      this.setFirstPersonModeActive = (active) => {
+      this.setFirstPersonModeActive = active => {
         bimViewer.viewer.cameraControl.navMode = active
           ? "firstPerson"
           : threeDActive
@@ -364,14 +364,14 @@ class BIMViewer extends Controller {
     this._firstPersonMode.setActive(false);
     this._navCubeMode.setActive(true);
 
-    this._modelsExplorer.on("modelLoaded", (modelId) => {
+    this._modelsExplorer.on("modelLoaded", modelId => {
       if (this._modelsExplorer.getNumModelsLoaded() > 0) {
         this.setControlsEnabled(true);
       }
       this.fire("modelLoaded", modelId);
     });
 
-    this._modelsExplorer.on("modelUnloaded", (modelId) => {
+    this._modelsExplorer.on("modelUnloaded", modelId => {
       if (this._modelsExplorer.getNumModelsLoaded() === 0) {
         this.setControlsEnabled(false);
         this.openTab("models");
@@ -379,7 +379,7 @@ class BIMViewer extends Controller {
       this.fire("modelUnloaded", modelId);
     });
 
-    this._queryTool.on("queryPicked", (event) => {
+    this._queryTool.on("queryPicked", event => {
       this.fire("queryPicked", event);
     });
 
@@ -400,7 +400,7 @@ class BIMViewer extends Controller {
 
     explorerElement
       .querySelector(".xeokit-showAllObjects")
-      .addEventListener("click", (event) => {
+      .addEventListener("click", event => {
         this.setAllObjectsVisible(true);
         this.setAllObjectsXRayed(false);
         event.preventDefault();
@@ -408,14 +408,14 @@ class BIMViewer extends Controller {
 
     explorerElement
       .querySelector(".xeokit-hideAllObjects")
-      .addEventListener("click", (event) => {
+      .addEventListener("click", event => {
         this.setAllObjectsVisible(false);
         event.preventDefault();
       });
 
     explorerElement
       .querySelector(".xeokit-showAllClasses")
-      .addEventListener("click", (event) => {
+      .addEventListener("click", event => {
         this.setAllObjectsVisible(true);
         this.setAllObjectsXRayed(false);
         event.preventDefault();
@@ -423,14 +423,14 @@ class BIMViewer extends Controller {
 
     explorerElement
       .querySelector(".xeokit-hideAllClasses")
-      .addEventListener("click", (event) => {
+      .addEventListener("click", event => {
         this.setAllObjectsVisible(false);
         event.preventDefault();
       });
 
     explorerElement
       .querySelector(".xeokit-showAllStoreys")
-      .addEventListener("click", (event) => {
+      .addEventListener("click", event => {
         this.setAllObjectsVisible(true);
         this.setAllObjectsXRayed(false);
         event.preventDefault();
@@ -438,14 +438,14 @@ class BIMViewer extends Controller {
 
     explorerElement
       .querySelector(".xeokit-hideAllStoreys")
-      .addEventListener("click", (event) => {
+      .addEventListener("click", event => {
         this.setAllObjectsVisible(false);
         event.preventDefault();
       });
 
     explorerElement
       .querySelector(".xeokit-loadAllModels")
-      .addEventListener("click", (event) => {
+      .addEventListener("click", event => {
         this.setControlsEnabled(false); // For quick UI feedback
         this.loadAllModels();
         event.preventDefault();
@@ -453,7 +453,7 @@ class BIMViewer extends Controller {
 
     explorerElement
       .querySelector(".xeokit-unloadAllModels")
-      .addEventListener("click", (event) => {
+      .addEventListener("click", event => {
         this.setControlsEnabled(false); // For quick UI feedback
         this._modelsExplorer.unloadAllModels();
         event.preventDefault();
@@ -462,7 +462,7 @@ class BIMViewer extends Controller {
     if (this._enableAddModels) {
       explorerElement
         .querySelector(".xeokit-addModel")
-        .addEventListener("click", (event) => {
+        .addEventListener("click", event => {
           this.fire("addModel", {});
           event.preventDefault();
         });
@@ -578,7 +578,7 @@ class BIMViewer extends Controller {
       }
     });
 
-    const onSceneTick = scene.on("tick", (e) => {
+    const onSceneTick = scene.on("tick", e => {
       if (this._configs.saoInteractive) {
         if (!saoEnabled) {
           scene.sao.enabled = !!this._configs.saoEnabled;
@@ -603,7 +603,7 @@ class BIMViewer extends Controller {
     this._canvasContextMenu = new CanvasContextMenu();
     this._objectContextMenu = new ObjectContextMenu();
 
-    this.viewer.cameraControl.on("rightClick", (e) => {
+    this.viewer.cameraControl.on("rightClick", e => {
       const event = e.event;
 
       const hit = this.viewer.scene.pick({
@@ -615,7 +615,7 @@ class BIMViewer extends Controller {
         this._objectContextMenu.context = {
           viewer: this.viewer,
           bimViewer: this,
-          showObjectInExplorers: (objectId) => {
+          showObjectInExplorers: objectId => {
             const openTabId = this.getOpenTab();
             if (
               openTabId !== "objects" &&
@@ -628,6 +628,26 @@ class BIMViewer extends Controller {
             this.showObjectInExplorers(objectId);
           },
           entity: hit.entity,
+          showObjectInModal: () => {
+            const projectId = this.getLoadedProjectId();
+            const modelId = hit.entity.model.id;
+            const objectId = hit.entity.id;
+            this.server.getMetadata(projectId, modelId, metadata => {
+              const findObject = metadata.metaObjects.find(
+                metaObject => metaObject.id === objectId
+              );
+              if (findObject) {
+                const objectInfoModal = document.getElementById(
+                  "objectInfoModal"
+                );
+                const name = document.querySelector(
+                  ".object-info-modal-content-content p"
+                );
+                name.innerText = findObject.name;
+                objectInfoModal.classList.add("show");
+              }
+            });
+          },
         };
         this._objectContextMenu.show(event.pageX, event.pageY);
       } else {
@@ -829,7 +849,7 @@ class BIMViewer extends Controller {
       this.error("getProjectsInfo() - Argument expected: 'done'");
       return;
     }
-    this.server.getProjects(done, (errorMsg) => {
+    this.server.getProjects(done, errorMsg => {
       this.error("getProjectsInfo() - " + errorMsg);
       if (error) {
         error(errorMsg);
@@ -855,7 +875,7 @@ class BIMViewer extends Controller {
       this.error("getProjectInfo() - Argument expected: 'done'");
       return;
     }
-    this.server.getProject(projectId, done, (errorMsg) => {
+    this.server.getProject(projectId, done, errorMsg => {
       this.error("getProjectInfo() - " + errorMsg);
       if (error) {
         error(errorMsg);
@@ -891,17 +911,11 @@ class BIMViewer extends Controller {
       this.error("getProjectInfo() - Argument expected: 'done'");
       return;
     }
-    this.server.getObjectInfo(
-      projectId,
-      modelId,
-      objectId,
-      done,
-      (errorMsg) => {
-        if (error) {
-          error(errorMsg);
-        }
+    this.server.getObjectInfo(projectId, modelId, objectId, done, errorMsg => {
+      if (error) {
+        error(errorMsg);
       }
-    );
+    });
   }
 
   //------------------------------------------------------------------------------------------------------------------
@@ -929,7 +943,7 @@ class BIMViewer extends Controller {
           done();
         }
       },
-      (errorMsg) => {
+      errorMsg => {
         this.error("loadProject() - " + errorMsg);
         if (error) {
           error(errorMsg);
@@ -986,7 +1000,7 @@ class BIMViewer extends Controller {
           done();
         }
       },
-      (errorMsg) => {
+      errorMsg => {
         this.error("loadModel() - " + errorMsg);
         if (error) {
           error(errorMsg);
@@ -1015,7 +1029,7 @@ class BIMViewer extends Controller {
             () => {
               loadNextModel(i + 1, done2);
             },
-            (errorMsg) => {
+            errorMsg => {
               this.error("loadAllModels() - " + errorMsg);
               loadNextModel(i + 1, done2);
             }
@@ -1257,7 +1271,7 @@ class BIMViewer extends Controller {
    * @param {Boolean} visible True to set objects visible, false to set them invisible.
    */
   setObjectsVisible(objectIds, visible) {
-    this._withObjectsInSubtree(objectIds, (entity) => {
+    this._withObjectsInSubtree(objectIds, entity => {
       entity.visible = visible;
     });
   }
@@ -1285,7 +1299,7 @@ class BIMViewer extends Controller {
    * @param {Boolean} xrayed Whether or not to X-ray the objects.
    */
   setObjectsXRayed(objectIds, xrayed) {
-    this._withObjectsInSubtree(objectIds, (entity) => {
+    this._withObjectsInSubtree(objectIds, entity => {
       entity.xrayed = xrayed;
     });
   }
@@ -1313,7 +1327,7 @@ class BIMViewer extends Controller {
    * @param {Boolean} selected Whether or not to set the objects selected.
    */
   setObjectsSelected(objectIds, selected) {
-    this._withObjectsInSubtree(objectIds, (entity) => {
+    this._withObjectsInSubtree(objectIds, entity => {
       entity.selected = selected;
     });
   }
@@ -1341,7 +1355,7 @@ class BIMViewer extends Controller {
     }
     for (let i = 0, len = objectIds.length; i < len; i++) {
       const objectId = objectIds[i];
-      this.viewer.metaScene.withMetaObjectsInSubtree(objectId, (metaObject) => {
+      this.viewer.metaScene.withMetaObjectsInSubtree(objectId, metaObject => {
         const entity = this.viewer.scene.objects[metaObject.id];
         if (entity) {
           callback(entity);
@@ -1364,7 +1378,7 @@ class BIMViewer extends Controller {
     const viewer = this.viewer;
     const scene = viewer.scene;
     const objectIds = [];
-    this.viewer.metaScene.withMetaObjectsInSubtree(objectId, (metaObject) => {
+    this.viewer.metaScene.withMetaObjectsInSubtree(objectId, metaObject => {
       if (scene.objects[metaObject.id]) {
         objectIds.push(metaObject.id);
       }
@@ -1413,7 +1427,7 @@ class BIMViewer extends Controller {
 
     for (var i = 0, len = objectIds.length; i < len; i++) {
       const objectId = objectIds[i];
-      this.viewer.metaScene.withMetaObjectsInSubtree(objectId, (metaObject) => {
+      this.viewer.metaScene.withMetaObjectsInSubtree(objectId, metaObject => {
         if (scene.objects[metaObject.id]) {
           entityIds.push(metaObject.id);
         }
@@ -1479,7 +1493,7 @@ class BIMViewer extends Controller {
     const viewer = this.viewer;
     const scene = viewer.scene;
     const objectIds = [];
-    this.viewer.metaScene.withMetaObjectsInSubtree(objectId, (metaObject) => {
+    this.viewer.metaScene.withMetaObjectsInSubtree(objectId, metaObject => {
       if (scene.objects[metaObject.id]) {
         objectIds.push(metaObject.id);
       }
