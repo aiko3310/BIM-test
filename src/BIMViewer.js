@@ -28,9 +28,9 @@ function createExplorerTemplate(cfg) {
   const explorerTemplate =
     `<div class="xeokit-tabs">
     <div class="xeokit-tab xeokit-modelsTab">
-        <a class="xeokit-tab-btn" href="#">模型</a>
+        <a class="xeokit-tab-btn" id='modelTagBtn' href="#">模型</a>
         <div class="xeokit-tab-content">
-            <div class="xeokit-btn-group">
+        <div class="xeokit-btn-group">
                 <button type="button" class="xeokit-loadAllModels xeokit-btn disabled" data-tippy-content="載入此專案全部模型">載入全部</button>
                 <button type="button" class="xeokit-unloadAllModels xeokit-btn disabled" data-tippy-content="卸載此專案全部模型">卸載全部</button>` +
     (cfg.enableEditModels
@@ -43,9 +43,10 @@ function createExplorerTemplate(cfg) {
     <div class="xeokit-tab xeokit-objectsTab">
         <a class="xeokit-tab-btn disabled" href="#">物件</a>
         <div class="xeokit-tab-content">
-         <div class="xeokit-btn-group">
+        <div class="xeokit-btn-group">
             <button type="button" class="xeokit-showAllObjects xeokit-btn disabled" data-tippy-content="顯示全部物件">顯示全部</button>
             <button type="button" class="xeokit-hideAllObjects xeokit-btn disabled" data-tippy-content="隱藏全部物件">隱藏全部</button>
+            <button type="button" class="xeokit-btn show-search-modal" data-tippy-content="搜尋">搜尋</button>
         </div>
         <div class="xeokit-objects xeokit-tree-panel" ></div>
         </div>
@@ -56,6 +57,7 @@ function createExplorerTemplate(cfg) {
             <div class="xeokit-btn-group">
                 <button type="button" class="xeokit-showAllClasses xeokit-btn disabled" data-tippy-content="顯示全部類別">顯示全部</button>
                 <button type="button" class="xeokit-hideAllClasses xeokit-btn disabled" data-tippy-content="隱藏全部類別">隱藏全部</button>
+                <button type="button" class="xeokit-btn show-search-modal" data-tippy-content="搜尋">搜尋</button>
             </div>
             <div class="xeokit-classes xeokit-tree-panel" ></div>
         </div>
@@ -66,6 +68,7 @@ function createExplorerTemplate(cfg) {
          <div class="xeokit-btn-group">
                 <button type="button" class="xeokit-showAllStoreys xeokit-btn disabled" data-tippy-content="顯示全部樓層">顯示全部</button>
                 <button type="button" class="xeokit-hideAllStoreys xeokit-btn disabled" data-tippy-content="隱藏全部樓層">隱藏全部</button>
+                <button type="button" class="xeokit-btn show-search-modal" data-tippy-content="搜尋">搜尋</button>
             </div>
              <div class="xeokit-storeys xeokit-tree-panel"></div>
         </div>

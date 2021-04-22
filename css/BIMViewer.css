@@ -471,7 +471,7 @@
 
 .xeokit-tree-panel {
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
     height: calc(100% - 150px);
 }
 
