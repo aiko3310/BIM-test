@@ -12,21 +12,25 @@
   opacity: 0;
   transition: opacity .3s ease-out;
 }
-.name{
+.name,.device-operation,.maintenance-info{
   display: flex;
   align-items: center;
   font-size: 16px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
-.name h6{
+.name h6,.device-operation h6,.maintenance-info h6{
   font-size: 16px;
   font-weight: 400;
   margin: 0;
   line-height: inherit;
 }
-.name p{
+.name p,.device-operation p,.maintenance-info p{
   margin: 0;
 }
+.running{
+  color:green;
+}
+
 .show{
 	-webkit-animation: fade-in .3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 	        animation: fade-in .3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -116,6 +120,12 @@
   font-weight: bold;
 }
 /* Table */
+.table-responsive h6{
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 0.5rem;
+  line-height: inherit;
+}
 .search-modal-content .content-result{
   max-height: 300px;
   overflow-y: auto;
