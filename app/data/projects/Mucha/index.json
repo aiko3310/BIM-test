@@ -6,7 +6,7 @@
             "id": "Mucha_2022",
             "name": "木柵建築圖",
             "position": [
-                100,
+                0,
                 0,
                 0
             ],
@@ -16,7 +16,7 @@
         {
             "id": "Mucha2016_12_15",
             "name": "木柵機電圖",
-            "position": [-20,0,-10],
+            "position": [0,0,0],
             "saoEnabled": false
         }
     ],
